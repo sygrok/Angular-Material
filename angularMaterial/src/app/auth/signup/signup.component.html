@@ -1,16 +1,32 @@
-<section>
-    <form>
+<section class="signup-form">
+    <form fxLayout="column"  fxLayoutAlign="center center" #f="ngForm" (ngSubmit)="onSubmit(f)" fxLayoutGap="5px">
         <mat-form-field>
-            <input type="email" matInput placeholder="Your email">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="example@hotmail.com" 
+            ngModel name="email" email required #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty.</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid.</mat-error>
         </mat-form-field>
-        <mat-form-field>
-            <input type="password" matInput placeholder="Your password">
-        </mat-form-field>
-    </form>
-</section>
 
-<section id="container">
-    <div id="child1" class="child"></div>
-    <div id="child2" class="child"></div>
-    <div id="child3" class="child"></div>
+        <mat-form-field hintLabel="Should be at least 6 characters long">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="******" 
+            ngModel name="password" required minlength="6" #pwInput="ngModel">
+            <mat-hint align="end">{{pwInput.value?.length}} /6</mat-hint>
+            <mat-error align="start">Should be at least 6 characters long</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [max]="maxDate" ngModel name="birthdate" required>
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-checkbox ngModel name="agree" required color="primary" required>Agree to Terms and Conditions.</mat-checkbox>
+
+        
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+    </form>
 </section>
