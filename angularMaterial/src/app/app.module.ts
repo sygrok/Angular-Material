@@ -15,6 +15,8 @@ import { NewTrainingComponent } from './training/new-training/new-training.compo
 import { PastTrainingsComponent } from './training/past-trainings/past-trainings.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeaderComponent } from './naviagtion/header/header.component';
+import { SidenavListComponent } from './naviagtion/sidenav-list/sidenav-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CurrentTrainingComponent,
     NewTrainingComponent,
     PastTrainingsComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
