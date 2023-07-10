@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./training.component.css']
 })
 export class TrainingComponent {
+  ongoingTraining = false;
   constructor(){}
 
   ngOnInit():void {
