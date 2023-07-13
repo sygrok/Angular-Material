@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TrainingService } from './training.service';
 
 @Component({
   selector: 'app-training',
@@ -8,6 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class TrainingComponent {
   ongoingTraining = false;
+
   constructor(){}
 
   ngOnInit():void {
