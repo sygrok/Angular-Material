@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Exercise } from './exercise.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,38 @@ export class TrainingService {
     { id: 'burpees', name: 'Burpees', duration: 60, calories: 8 }
   ]
 
+  private runningExercise: Exercise
+  private exercises : Exercise[]=[]
+  exerciseChanged = new Subject<Exercise>()
+
   getAvailableExercises(){
     return this.availableExercises.slice()
   }
+
+  startExercise(selectId: string){
+    this.runningExercise = this.availableExercises.find(ex => ex.id === selectId)
+    this.exerciseChanged.next({... this.runningExercise})
+  }
+
+  completeExercise(){
+    this.exercises.push({...this.runningExercise, date: new Date(), state:'completed'})
+    this.runningExercise = null
+    this.exerciseChanged.next(null)
+  }
+
+  cancelExercise(progress:number){
+    this.exercises.push({...this.runningExercise, 
+      date: new Date(), 
+      duration: this.runningExercise.duration * (progress / 100), 
+      calories: this.runningExercise.duration * (progress / 100),
+      state:'cancelled'})
+    this.runningExercise = null
+    this.exerciseChanged.next(null)
+  }
+
+  getRunningExercise(){
+    return { ...this.runningExercise}
+  }
+
+
 }
