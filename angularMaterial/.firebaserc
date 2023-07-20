@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fitness-tracker-app-ba": {
+      "hosting": {
+        "angularMaterial": [
+          "fitness-tracker-app-ba"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fitness-tracker-app-ba"
+  }
+}
