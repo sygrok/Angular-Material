@@ -1,9 +1,0 @@
-{
-  "hosting": [
-    {
-      "target": "angularMaterial",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
-}
